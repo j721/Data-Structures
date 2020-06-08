@@ -10,6 +10,13 @@ return elements in Last In First Out order.
    Make sure the Stack tests pass.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
+
+   An array you simply have to call the push() and pop() methods to add a new element onto the array.
+   Whereas, a linked list we have to change the tail reference from previous last element in 
+   the list, to our newly added element that will 
+   become the new tail end of the list, to correctly add/delete the last element in our linked list. 
+
+
 """
 
 #array as underlying storage structure 
