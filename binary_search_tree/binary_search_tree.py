@@ -97,9 +97,23 @@ class BSTNode:
         else:
             return self.right.get_max()
 
+
+
+
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-        pass
+       #call the function `fn`
+       fn(self.value)
+        #go to right child nodes if any
+       if self.right:
+           self.right.for_each(fn)
+       #go to the left child nodes if any
+       if self.left:
+           self.left.for_each(fn)
+    
+        
+        
+       
 
     # Part 2 -----------------------
 
