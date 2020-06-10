@@ -87,7 +87,15 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        #check to the right side of the tree
+        #since left (self.left.value) side of the tree will always be smaller than the root
+
+        #if the right side of the tree is empty that just return the tree
+        if not self.right:
+            return self.value
+        #if right side of the tree is not empty. Then get the right child node with the max value
+        else:
+            return self.right.get_max()
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
