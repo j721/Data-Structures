@@ -93,13 +93,13 @@ class DoublyLinkedList:
         self.tail = new_node
         self.length += 1
 
+        #2nd method fixed error in else statement
         # if not self.head and not self.tail:
         #     self.head = new_node
         #     self.tail = new_node
         # else:
         #     new_node.prev = self.tail
-        #     self.tail.prev = new_node
-        #     self.tail = new_node
+        #     self.tail.next = new_node
         # self.tail = new_node
         # self.length +=1
 
