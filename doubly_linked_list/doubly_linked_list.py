@@ -269,7 +269,7 @@ class DoublyLinkedList:
         while current_node is not None:
             if current_node.value > max:
                 max = current_node.value
-            #update the current node to the next node in the list
+            #update the current node to become the next node in the list
             current_node = current_node.next
 
         return max

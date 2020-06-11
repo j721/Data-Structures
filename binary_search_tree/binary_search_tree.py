@@ -54,35 +54,54 @@ class BSTNode:
 
     # Return True if the tree contains the value
     # False if it does not
-    def contains(self, target):
+    # def contains(self, target):
 
-        #If tree contains target value, return True
+    #     #If tree contains target value, return True
+    #     if self.value == target:
+    #         return True
+
+    #     # figure out which direction we need to go 
+    #     else: 
+    #        #if target is lower than value
+    #         if target < self.value:
+    #         #if the target value is going to be on the left as a child node
+    #             if not self.left:
+    #                 return False
+    #             if self.left.value == target:
+    #                 return True
+    #             else:
+    #                 self.left.contains(target)
+    #         # if target is >= than the value from the tree(self.value)        
+    #         else:
+    #             #is there any child node on the right?
+    #             if not self.right:
+    #                 return False
+    #             #if the right child node is our target than return True
+    #             if self.right.value == target:
+    #                 return True
+    #             else:
+    #                 self.right.contains(target)
+
+    def contains(self, target):
+        #base case?
+        #we find the target in the tree node
         if self.value == target:
             return True
-
-        # if tree does not contain target value. 
-        #value != target
-        else: 
-           #if target is lower than value
-            if target < self.value:
-            #if the target value is going to be on the left as a child node
-                if not self.left:
-                    return False
-                if self.left.value == target:
-                    return True
-                else:
-                    self.left.contains(target)
-            # if target is >= than the value from the tree(self.value)        
+        #figure out which direction we need to go in
+        if target < self.value:
+            #we go left
+            if not self.left:
+                return False
             else:
-                #is there any child node on the right?
-                if not self.right:
-                    return False
-                #if the right child node is our target than return True
-                if self.right.value == target:
-                    return True
-                else:
-                    self.right.contains(target)
-
+                return self.left.contains(target)
+        #or, we get a spot where the node should be, but nothing is there
+        else: 
+            #we go right
+            if not self.right:
+                return False
+            else:
+                return self.right.contains(target)
+        #how do we move towards the base case?
                 
 
     # Return the maximum value found in the tree
@@ -100,14 +119,15 @@ class BSTNode:
 
 
     # Call the function `fn` on the value of each node
-    #example of a tree traversal
+    #example of a tree traversal. Want to traverse through every tree node
+    #doesn't actually return anything 
     def for_each(self, fn):
-       #call the function `fn`
+       #call the function `fn` on self.value
        fn(self.value)
-        #go to right child nodes if any
+        #go to right child nodes if any exists
        if self.right:
            self.right.for_each(fn)
-       #go to the left child nodes if any
+       #go to the left child nodes if any exists
        if self.left:
            self.left.for_each(fn)
     
@@ -125,7 +145,7 @@ class BSTNode:
         print(node.value)
         if node.right:
             node.right.in_order_print(node.right)
-            
+
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
@@ -134,15 +154,30 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        print (node.value)
+        if node.left:
+            node.left.dft_print(node.left)
+        if node.right:
+            node.right.dft_print(node.right)
+    
+    
 
     # Stretch Goals -------------------------
     # Note: Research may be required
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(node.value)
+        if node.left:
+            node.left.pre_order_dft(node.left)
+        if node.right:
+            node.right.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        # print(node.value)
+        if node.left:
+            node.left.post_order_dft(node.left)
+        if node.right:
+            node.right.post_order_dft(node.right)
+        print(node.value)
