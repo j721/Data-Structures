@@ -213,8 +213,9 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
+        #dft have to create a stack
         stack = []
-
+        #add a node to our empty stack
         stack.append(node)
 
         while len(stack) > 0:
@@ -224,13 +225,13 @@ class BSTNode:
             if current.left:
                 stack.append(current.left)
             print(current.value)
+            
         # print (node.value)
         # if node.left:
         #     node.left.dft_print(node.left)
         # if node.right:
         #     node.right.dft_print(node.right)
-    
-    
+
 
     # Stretch Goals -------------------------
     # Note: Research may be required
