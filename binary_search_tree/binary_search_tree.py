@@ -202,7 +202,7 @@ class BSTNode:
         #if queue is not empty
         while len(queue) > 0:
             current_node = queue.popleft()
-            print(current_node.values) 
+            print(current_node.value) 
             if current_node.left:
                 queue.append(current_node.left)
             if current_node.right:
@@ -213,11 +213,22 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        print (node.value)
-        if node.left:
-            node.left.dft_print(node.left)
-        if node.right:
-            node.right.dft_print(node.right)
+        stack = []
+
+        stack.append(node)
+
+        while len(stack) > 0:
+            current = stack.pop()
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
+            print(current.value)
+        # print (node.value)
+        # if node.left:
+        #     node.left.dft_print(node.left)
+        # if node.right:
+        #     node.right.dft_print(node.right)
     
     
 
