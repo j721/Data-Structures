@@ -99,6 +99,7 @@ class DoublyLinkedList:
         if not self.tail:
             self.head = new_node
         else:
+            #the node already existing on the list, the next reference will point to the new node
             self.tail.next = new_node
             new_node.prev = self.tail
         self.tail = new_node
@@ -127,7 +128,7 @@ class DoublyLinkedList:
         if self.head == self.tail:
             self.head = None
             self.tail = None
-        # if there is more than 1 node 
+        # if there is more than 1 node. Need to have more than more otherwise the list the empty
         else:
             self.delete(self.tail)
         self.length-=1
@@ -138,6 +139,7 @@ class DoublyLinkedList:
     def move_to_front(self, node):
         #get the node value
         value = node.value
+        #have to remove the current node before we can move it to its new position
         self.delete(node)
         self.add_to_head(value)
         
@@ -223,15 +225,15 @@ class DoublyLinkedList:
         if self.head == self.tail:
             self.head = None
             self.tail = None
-        #if node is the head
+        #if node is the head. Set the new head to become the next node in line. After the first head node has been deleted
         if node == self.head:
             self.head = node.next
             node.delete()
-        #if node is the tail
+        #if node is the tail. Need to set the previous node to become the new tail. After the old tail node has been removed
         if node == self.tail:
             self.tail = node.prev
             node.delete()
-        #if node is somewhere in the middle of the list    
+        #if node is somewhere in the middle of the list.don't have to re-assign new tail or head    
         else:
             node.delete()
         self.length -=1
@@ -267,6 +269,7 @@ class DoublyLinkedList:
         while current_node is not None:
             if current_node.value > max:
                 max = current_node.value
+            #update the current node to the next node in the list
             current_node = current_node.next
 
         return max

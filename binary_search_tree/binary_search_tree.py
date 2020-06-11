@@ -86,6 +86,7 @@ class BSTNode:
                 
 
     # Return the maximum value found in the tree
+    #used recursion - function that calls itself
     def get_max(self):
         #check to the right side of the tree
         #since left (self.left.value) side of the tree will always be smaller than the root
@@ -98,9 +99,8 @@ class BSTNode:
             return self.right.get_max()
 
 
-
-
     # Call the function `fn` on the value of each node
+    #example of a tree traversal
     def for_each(self, fn):
        #call the function `fn`
        fn(self.value)
@@ -120,8 +120,12 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
-
+        if node.left:
+            node.left.in_order_print(node.left)
+        print(node.value)
+        if node.right:
+            node.right.in_order_print(node.right)
+            
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
